@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "Spam Filter",
+    "version": "1.0",
+    "description": "Detects and warns users about spam content on web pages.",
+    "permissions": ["storage", "tabs", "idle", "activeTab", "scripting","notifications"],
+    "host_permissions": ["http://*/*", "https://*/*"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["contentScript.js"]
+      }
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources":[
+                "assets/no-cursing.png",
+                "assets/ext-icon.png"
+            ],
+            "matches": ["https://*/*"] 
+        }
+    ],
+    "action": {
+      "default_title": "Spam Filter",
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "assets/no-cursing.png",
+        "24": "assets/no-cursing.png",
+        "32": "assets/no-cursing.png"
+      }
+    }
+    
+  }
